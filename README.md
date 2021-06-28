@@ -58,3 +58,6 @@ kubernetes   ClusterIP      X.0.0.1      <none>           443/TCP        24m
 In the above example we are running a single pod, but in actual production environment we would have to run multiple instances or pods so that the load balancer is able to balance the traffic based on load. For that in kubernetes we need to create a deployment yaml file. If you are new to Kubernetes please do not worry as I am also new and you will get examples of such deployment file from MSDN. Please check the deployment file I have added at https://github.com/kaushikghosh/helloapi/blob/main/deploy-webapi.yml. This deployment file is provided as example in this MSDN article which I changed to point to my image and also mention the service type as a "LoadBalancer". Reference : https://docs.microsoft.com/en-us/dotnet/architecture/containerized-lifecycle/design-develop-containerized-apps/build-aspnet-core-applications-linux-containers-aks-kubernetes.
 Once you have the deployment file in place, you can run the following command to do the deployment.
 >kubectl apply -f deploy-webapi.yml
+
+You can delete the above deployment with the following command 
+> kubectl delete deployment webapi
