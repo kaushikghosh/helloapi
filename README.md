@@ -55,4 +55,4 @@ helloapi     LoadBalancer   X.0.X.118   X.X.X.X   80:31761/TCP   7s
 kubernetes   ClusterIP      X.0.0.1      <none>           443/TCP        24m
  
 ### Scale the deployment
-In the above example we are running a single pod, but in actual production environment we would have to run multiple instances or pods so that the load balancer is able to balance the traffic based on load. For that in kubernetes we need to create a deployment yaml file.
+In the above example we are running a single pod, but in actual production environment we would have to run multiple instances or pods so that the load balancer is able to balance the traffic based on load. For that in kubernetes we need to create a deployment yaml file. If you are new to Kubernetes please do not worry as I am also new and you will get examples of such deployment file from MSDN. Please check the deployment file I have added at https://github.com/kaushikghosh/helloapi/blob/main/deploy-webapi.yml
