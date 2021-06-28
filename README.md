@@ -30,3 +30,28 @@ I will be using the docker hub as my container registry and the regustry will be
   >docker push kaushikghosh123/helloapi:latest
   
 Once the image is pushed the same would show up on the docker hub website.
+## Deployment on Azure
+Please make sure you sign up for a free Azure Account through https://portal.azure.com, you will get a $200 credit and that should be enough to go through the steps required for deployment. Once you have created an account, please make sure you have azure cli (Azure Command Line Interface) installed. If not then you can use the command below from the command line interface
+  > az aks install-cli
+
+After the installation you can login using the command below
+  > az login
+  
+Now, once this is done you can go back to the portal and create an Azure Kubernetes Service and select a Node cluster of 1 node instead of the default of 3 nodes. Once that is created, you can come back to the command line interface and get the kubernetes credentials as below
+  > az account set --subscription <yourSubscriptionId>
+  > az aks get-credentials --resource-group <resourceGroupName> --name <clusterNameThatYouCreated>
+  
+In order to start deployment, first create a pod as below
+>kubectl run helloapi --image=kaushikghosh123/helloapi:latest --port=80
+
+Now we can create a service to give access to the external world to the api running inside the pod
+>kubectl expose pod helloapi --type="LoadBalancer" --port=80
+
+You can check the status of the service as below, I have masked the IPs on purpose, but once you navigate to the external IP address on the browser you should be able to see the service values http://X.X.X.X/weatherforecast
+
+>kubectl get svc
+NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)        AGE
+helloapi     LoadBalancer   X.0.X.118   X.X.X.X   80:31761/TCP   7s
+kubernetes   ClusterIP      X.0.0.1      <none>           443/TCP        24m
+  
+  
