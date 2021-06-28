@@ -53,5 +53,6 @@ You can check the status of the service as below, I have masked the IPs on purpo
 NAME         TYPE           CLUSTER-IP    EXTERNAL-IP      PORT(S)        AGE
 helloapi     LoadBalancer   X.0.X.118   X.X.X.X   80:31761/TCP   7s
 kubernetes   ClusterIP      X.0.0.1      <none>           443/TCP        24m
-  
-  
+ 
+### Scale the deployment
+In the above example we are running a single pod, but in actual production environment we would have to run multiple instances or pods so that the load balancer is able to balance the traffic based on load. For that in kubernetes we need to create a deployment yaml file.
