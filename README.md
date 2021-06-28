@@ -28,4 +28,5 @@ I will be using the docker hub as my container registry and the regustry will be
   So in my case it was like below
   >docker tag helloapi:latest kaushikghosh123/helloapi:latest
   >docker push kaushikghosh123/helloapi:latest
+  
 Once the image is pushed the same would show up on the docker hub website.
